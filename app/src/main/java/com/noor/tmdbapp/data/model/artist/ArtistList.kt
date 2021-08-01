@@ -1,4 +1,4 @@
-package com.noor.tmdbapp.data
+package com.noor.tmdbapp.data.model.artist
 
 
 import com.google.gson.annotations.SerializedName

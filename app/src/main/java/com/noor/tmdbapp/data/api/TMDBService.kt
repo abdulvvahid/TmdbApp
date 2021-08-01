@@ -1,8 +1,8 @@
 package com.noor.tmdbapp.data.api
 
-import com.noor.tmdbapp.data.ArtistList
-import com.noor.tmdbapp.data.MovieList
-import com.noor.tmdbapp.data.TvShowList
+import com.noor.tmdbapp.data.model.artist.ArtistList
+import com.noor.tmdbapp.data.model.movie.MovieList
+import com.noor.tmdbapp.data.model.tvshow.TvShowList
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
