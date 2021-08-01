@@ -19,7 +19,7 @@ class MovieLocalDataSourceImpl(
         }
     }
 
-    override suspend fun clearAll(){
+    override suspend fun clearAllMovie(){
         CoroutineScope(Dispatchers.IO).launch {
             movieDao.deleteAllMovies()
         }
