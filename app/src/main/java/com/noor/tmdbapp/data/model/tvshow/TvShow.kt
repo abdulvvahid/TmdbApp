@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-@Entity( tableName = "popular_tv_shows")
+@Entity( tableName = "popular_tvShows")
 data class TvShow(
 
     @PrimaryKey
