@@ -19,7 +19,7 @@ class ArtistLocalDataSourceImpl(
         }
     }
 
-    override suspend fun clearAllArtist(){
+    override suspend fun clearAllArtists(){
         CoroutineScope(Dispatchers.IO).launch {
             artistDao.deleteAllArtists()
         }

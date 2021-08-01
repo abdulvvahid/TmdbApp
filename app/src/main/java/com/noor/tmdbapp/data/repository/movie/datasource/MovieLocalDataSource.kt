@@ -6,6 +6,6 @@ interface MovieLocalDataSource {
 
     suspend fun getMovieFromDB(): List<Movie>
     suspend fun saveMovieToDB(movies: List<Movie>)
-    suspend fun clearAllMovie()
+    suspend fun clearAllMovies()
 
 }

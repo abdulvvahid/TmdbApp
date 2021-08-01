@@ -6,6 +6,6 @@ interface ArtistLocalDataSource {
 
     suspend fun getArtistFromDB(): List<Artist>
     suspend fun saveArtistToDB(artists: List<Artist>)
-    suspend fun clearAllArtist()
+    suspend fun clearAllArtists()
 
 }

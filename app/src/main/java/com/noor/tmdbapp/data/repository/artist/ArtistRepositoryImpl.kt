@@ -20,7 +20,7 @@ class ArtistRepositoryImpl(
 
     override suspend fun updateArtists(): List<Artist> {
         val newArtistList: List<Artist> = getArtistsFromApi()
-        artistLocalDataSource.clearAllArtist()
+        artistLocalDataSource.clearAllArtists()
         artistLocalDataSource.saveArtistToDB(newArtistList)
         artistCacheDataSource.saveArtistToCache(newArtistList)
         return newArtistList
@@ -49,6 +49,7 @@ class ArtistRepositoryImpl(
         }
         if(artistList.isEmpty()){
             artistList = getArtistsFromApi()
+            artistLocalDataSource.clearAllArtists()
             artistLocalDataSource.saveArtistToDB(artistList)
         }
         return artistList
