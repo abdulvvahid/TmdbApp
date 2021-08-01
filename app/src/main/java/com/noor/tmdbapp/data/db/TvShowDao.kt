@@ -1,4 +1,4 @@
-package com.noor.tmdbapp.data
+package com.noor.tmdbapp.data.db
 
 import androidx.room.Dao
 import androidx.room.Insert
