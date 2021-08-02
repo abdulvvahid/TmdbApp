@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.noor.tmdbapp.BuildConfig
 import com.noor.tmdbapp.R
 import com.noor.tmdbapp.data.model.movie.Movie
@@ -27,6 +29,7 @@ class MoviesFragment : Fragment() {
     lateinit var factory: MoviesViewModelFactory
     private lateinit var binding: FragmentMoviesBinding
     private lateinit var moviesViewModel: MoviesViewModel
+    private lateinit var adapter: MovieAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,12 +44,31 @@ class MoviesFragment : Fragment() {
         moviesViewModel = ViewModelProvider(this,factory)
             .get(MoviesViewModel::class.java)
 
-        val responseLiveData: LiveData<List<Movie>?> = moviesViewModel.getMovies()
-        responseLiveData.observe(viewLifecycleOwner, Observer{
-            Log.i("MYTAG",it.toString())
-        })
+        initRecyclerView()
 
         return binding.root
+    }
+
+    private fun initRecyclerView(){
+        binding.movieRecyclerView.layoutManager = LinearLayoutManager(context)
+        adapter = MovieAdapter()
+        binding.movieRecyclerView.adapter = adapter
+        displayPopularMovies()
+    }
+
+    private fun displayPopularMovies(){
+        binding.movieProgressBar.visibility = View.VISIBLE
+        val responseLiveData: LiveData<List<Movie>?> = moviesViewModel.getMovies()
+        responseLiveData.observe(viewLifecycleOwner, Observer{
+            if(it != null){
+                adapter.setList(it)
+                adapter.notifyDataSetChanged()
+                binding.movieProgressBar.visibility = View.GONE
+            }else{
+                binding.movieProgressBar.visibility = View.GONE
+                Toast.makeText(context,"No data avaible", Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
 }
