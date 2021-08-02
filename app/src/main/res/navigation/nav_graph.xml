@@ -6,7 +6,7 @@
     app:startDestination="@id/moviesFragment">
     <fragment
         android:id="@+id/moviesFragment"
-        android:name="com.noor.tmdbapp.presentation.MoviesFragment"
+        android:name="com.noor.tmdbapp.presentation.movie.MoviesFragment"
         android:label="fragment_movies"
         tools:layout="@layout/fragment_movies" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/tvShowsFragment"
-        android:name="com.noor.tmdbapp.presentation.TvShowsFragment"
+        android:name="com.noor.tmdbapp.presentation.tvshow.TvShowsFragment"
         android:label="fragment_tv_shows"
         tools:layout="@layout/fragment_tv_shows" >
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/artistsFragment"
-        android:name="com.noor.tmdbapp.presentation.ArtistsFragment"
+        android:name="com.noor.tmdbapp.presentation.artist.ArtistsFragment"
         android:label="fragment_artists"
         tools:layout="@layout/fragment_artists" />
 </navigation>

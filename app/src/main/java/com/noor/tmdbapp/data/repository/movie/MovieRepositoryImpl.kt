@@ -37,7 +37,6 @@ class MovieRepositoryImpl(
         }catch (e: Exception){
             Log.i("Tag", e.message.toString())
         }
-
         return movieList
     }
 
