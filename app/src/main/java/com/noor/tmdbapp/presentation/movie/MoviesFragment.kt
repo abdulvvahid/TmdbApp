@@ -2,10 +2,8 @@ package com.noor.tmdbapp.presentation.movie
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
@@ -67,6 +65,33 @@ class MoviesFragment : Fragment() {
             }else{
                 binding.movieProgressBar.visibility = View.GONE
                 Toast.makeText(context,"No data avaible", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        return when(item.itemId){
+            R.id.action_update -> {
+                updateMovies()
+                true
+            }
+            else -> {
+                return super.onOptionsItemSelected(item)
+            }
+        }
+    }
+
+    fun updateMovies(){
+        binding.movieProgressBar.visibility = View.VISIBLE
+        val response: LiveData<List<Movie>?> = moviesViewModel.updateMovies()
+        response.observe(viewLifecycleOwner, Observer {
+            if(it != null) {
+                adapter.setList(it)
+                adapter.notifyDataSetChanged()
+                binding.movieProgressBar.visibility = View.GONE
+            } else {
+                binding.movieProgressBar.visibility = View.GONE
             }
         })
     }
