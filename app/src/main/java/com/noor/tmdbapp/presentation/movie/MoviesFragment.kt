@@ -9,7 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.noor.tmdbapp.BuildConfig
 import com.noor.tmdbapp.R
 import com.noor.tmdbapp.data.model.movie.Movie
@@ -44,11 +46,16 @@ class MoviesFragment : Fragment() {
 
         initRecyclerView()
 
+        binding.movieSwipeRefreshLayout.setOnRefreshListener {
+            updateMovies()
+            binding.movieSwipeRefreshLayout.isRefreshing = false
+        }
+
         return binding.root
     }
 
     private fun initRecyclerView(){
-        binding.movieRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.movieRecyclerView.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL,false)
         adapter = MovieAdapter()
         binding.movieRecyclerView.adapter = adapter
         displayPopularMovies()
@@ -69,18 +76,19 @@ class MoviesFragment : Fragment() {
         })
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        return when(item.itemId){
-            R.id.action_update -> {
-                updateMovies()
-                true
-            }
-            else -> {
-                return super.onOptionsItemSelected(item)
-            }
-        }
-    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//
+//        return when(item.itemId){
+//            R.id.action_update -> {
+//                updateMovies()
+//                true
+//            }
+//            else -> {
+//                return super.onOptionsItemSelected(item)
+//            }
+//        }
+//    }
 
     fun updateMovies(){
         binding.movieProgressBar.visibility = View.VISIBLE

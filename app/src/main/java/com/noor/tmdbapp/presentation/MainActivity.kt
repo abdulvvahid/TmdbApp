@@ -9,7 +9,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.noor.tmdbapp.R
 import com.noor.tmdbapp.databinding.ActivityMainBinding
-import com.noor.tmdbapp.presentation.di.Injector
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.update,menu)
+        inflater.inflate(R.menu.search,menu)
         return true
     }
 
