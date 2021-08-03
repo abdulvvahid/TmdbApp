@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.noor.tmdbapp.R
 import com.noor.tmdbapp.databinding.FragmentArtistsBinding
+import com.noor.tmdbapp.presentation.di.Injector
 
 class ArtistsFragment : Fragment() {
 
@@ -19,6 +20,10 @@ class ArtistsFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_artists, container, false)
         // Inflate the layout for this fragment
+        (activity?.applicationContext as Injector).createArtistSubComponent()
+            .inject(this)
+        activity?.title = "Trending Artists"
+
         return binding.root
     }
 

@@ -40,6 +40,7 @@ class MoviesFragment : Fragment() {
 
         (activity?.applicationContext as Injector).createMovieSubComponent()
             .inject(this)
+        activity?.title = "Trending Movies"
 
         moviesViewModel = ViewModelProvider(this,factory)
             .get(MoviesViewModel::class.java)

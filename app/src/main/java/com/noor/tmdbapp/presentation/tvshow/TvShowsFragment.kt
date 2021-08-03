@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.noor.tmdbapp.R
 import com.noor.tmdbapp.databinding.FragmentTvShowsBinding
+import com.noor.tmdbapp.presentation.di.Injector
 
 class TvShowsFragment : Fragment() {
 
@@ -19,6 +20,11 @@ class TvShowsFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_tv_shows, container, false)
         // Inflate the layout for this fragment
+
+        (activity?.applicationContext as Injector).createTvShowSubComponent()
+            .inject(this)
+        activity?.title = "Trending TV Shows"
+
         return binding.root
     }
 
