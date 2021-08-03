@@ -9,11 +9,11 @@ import com.noor.tmdbapp.R
 import com.noor.tmdbapp.data.model.tvshow.TvShow
 import com.noor.tmdbapp.databinding.ListItemBinding
 
-class TvShowAdapter(): RecyclerView.Adapter<MyViewHolder>() {
+class TvShowAdapter : RecyclerView.Adapter<MyViewHolder>() {
 
     private val tvShowList = ArrayList<TvShow>()
 
-    fun setList(tvShows: List<TvShow>){
+    fun setList(tvShows: List<TvShow>) {
         tvShowList.clear()
         tvShowList.addAll(tvShows)
     }
@@ -41,7 +41,7 @@ class MyViewHolder(
     val binding: ListItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(tvShow: TvShow){
+    fun bind(tvShow: TvShow) {
         binding.listItemTitleTextView.text = tvShow.name
         binding.listItemAverageVote.text = tvShow.voteAverage.toString()
         binding.listItemReleaseDate.text = tvShow.firstAirDate
