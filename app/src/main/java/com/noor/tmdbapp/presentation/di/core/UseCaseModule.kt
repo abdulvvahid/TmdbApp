@@ -1,6 +1,7 @@
 package com.noor.tmdbapp.presentation.di.core
 
 import com.noor.tmdbapp.domain.repository.ArtistRepository
+import com.noor.tmdbapp.domain.repository.MovieDetailRepository
 import com.noor.tmdbapp.domain.repository.MovieRepository
 import com.noor.tmdbapp.domain.repository.TvShowRepository
 import com.noor.tmdbapp.domain.usecase.*
@@ -38,6 +39,11 @@ class UseCaseModule {
     @Provides
     fun provideUpdateArtistUseCase(artistRepository: ArtistRepository): UpdateArtistUseCase {
         return UpdateArtistUseCase(artistRepository)
+    }
+
+    @Provides
+    fun provideGetMovieDetailUseCase(movieDetailRepository: MovieDetailRepository): GetMovieDetailUseCase {
+        return GetMovieDetailUseCase(movieDetailRepository)
     }
 
 }

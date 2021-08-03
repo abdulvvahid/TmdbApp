@@ -19,6 +19,7 @@ android {
 
         buildConfigField "String","API_KEY","\"13b6329a19e3a7b073c700365912c30d\""
         buildConfigField "String","BASE_URL","\"https://api.themoviedb.org/3/\""
+        buildConfigField "Integer","MOVIE_ID","846214"
     }
 
     buildTypes {

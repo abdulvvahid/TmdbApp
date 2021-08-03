@@ -8,11 +8,14 @@ import com.noor.tmdbapp.data.repository.movie.MovieRepositoryImpl
 import com.noor.tmdbapp.data.repository.movie.datasource.MovieCacheDataSource
 import com.noor.tmdbapp.data.repository.movie.datasource.MovieLocalDataSource
 import com.noor.tmdbapp.data.repository.movie.datasource.MovieRemoteDataSource
+import com.noor.tmdbapp.data.repository.moviedetail.MovieDetailRepositoryImpl
+import com.noor.tmdbapp.data.repository.moviedetail.datasource.MovieDetailRemoteDataSource
 import com.noor.tmdbapp.data.repository.tvshow.TvShowRepositoryImpl
 import com.noor.tmdbapp.data.repository.tvshow.datasource.TvShowCacheDataSource
 import com.noor.tmdbapp.data.repository.tvshow.datasource.TvShowLocalDataSource
 import com.noor.tmdbapp.data.repository.tvshow.datasource.TvShowRemoteDataSource
 import com.noor.tmdbapp.domain.repository.ArtistRepository
+import com.noor.tmdbapp.domain.repository.MovieDetailRepository
 import com.noor.tmdbapp.domain.repository.MovieRepository
 import com.noor.tmdbapp.domain.repository.TvShowRepository
 import dagger.Module
@@ -61,6 +64,16 @@ class RepositoryModule {
             artistRemoteDataSource,
             artistLocalDataSource,
             artistCacheDataSource
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideMovieDetailRepository(
+        movieDetailRemoteDataSource: MovieDetailRemoteDataSource
+    ): MovieDetailRepository {
+        return MovieDetailRepositoryImpl(
+            movieDetailRemoteDataSource
         )
     }
 }
