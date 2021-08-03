@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.noor.tmdbapp.domain.usecase.GetTvShowsUseCase
 import com.noor.tmdbapp.domain.usecase.UpdateTvShowsUseCase
 
-class TvShowViewModelFactory(
+class TvShowsViewModelFactory(
     private val getTvShowsUseCase: GetTvShowsUseCase,
     private val updateTvShowsUseCase: UpdateTvShowsUseCase
 ): ViewModelProvider.Factory {

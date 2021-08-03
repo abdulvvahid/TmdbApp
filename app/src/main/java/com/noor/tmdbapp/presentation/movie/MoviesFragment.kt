@@ -72,7 +72,7 @@ class MoviesFragment : Fragment() {
                 binding.movieProgressBar.visibility = View.GONE
             }else{
                 binding.movieProgressBar.visibility = View.GONE
-                Toast.makeText(context,"No data avaible", Toast.LENGTH_LONG).show()
+                Toast.makeText(context,"No data available", Toast.LENGTH_LONG).show()
             }
         })
     }

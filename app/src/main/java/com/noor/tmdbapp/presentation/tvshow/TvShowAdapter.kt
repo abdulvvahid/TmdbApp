@@ -1,4 +1,4 @@
-package com.noor.tmdbapp.presentation.movie
+package com.noor.tmdbapp.presentation.tvshow
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,16 +6,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.noor.tmdbapp.R
-import com.noor.tmdbapp.data.model.movie.Movie
+import com.noor.tmdbapp.data.model.tvshow.TvShow
 import com.noor.tmdbapp.databinding.ListItemBinding
 
-class MovieAdapter : RecyclerView.Adapter<MyViewHolder>() {
+class TvShowAdapter(): RecyclerView.Adapter<MyViewHolder>() {
 
-    private val movieList = ArrayList<Movie>()
+    private val tvShowList = ArrayList<TvShow>()
 
-    fun setList(movies: List<Movie>) {
-        movieList.clear()
-        movieList.addAll(movies)
+    fun setList(tvShows: List<TvShow>){
+        tvShowList.clear()
+        tvShowList.addAll(tvShows)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -30,22 +30,22 @@ class MovieAdapter : RecyclerView.Adapter<MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(movieList[position])
+        holder.bind(tvShowList[position])
     }
 
-    override fun getItemCount(): Int = movieList.size
-}
+    override fun getItemCount(): Int = tvShowList.size
 
+}
 
 class MyViewHolder(
     val binding: ListItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(movie: Movie) {
-        binding.listItemTitleTextView.text = movie.title
-        binding.listItemReleaseDate.text = movie.releaseDate
-        binding.listItemAverageVote.text = movie.voteAverage.toString()
-        val posterUrl: String = "https://image.tmdb.org/t/p/w500" + movie.posterPath
+    fun bind(tvShow: TvShow){
+        binding.listItemTitleTextView.text = tvShow.name
+        binding.listItemAverageVote.text = tvShow.voteAverage.toString()
+        binding.listItemReleaseDate.text = tvShow.firstAirDate
+        val posterUrl: String = "https://image.tmdb.org/t/p/w500" + tvShow.posterPath
         Glide.with(binding.listItemImageView.context)
             .load(posterUrl)
             .into(binding.listItemImageView)
