@@ -1,7 +1,12 @@
 ## TmdbApp
 Trending App lists trending movies, TV shows, and actors
 
-App Overview:
+## İnstallation
+- Download .rar file;
+- Extract directory to where you want;
+- Open Directory with Android Studio;
+
+# App Overview:
 ![](https://github.com/abdulvvahid/TmdbApp/blob/master/TmdbOverview.gif)
 
 ### Features
