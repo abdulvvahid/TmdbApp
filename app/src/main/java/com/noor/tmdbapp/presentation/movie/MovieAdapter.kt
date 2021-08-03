@@ -42,7 +42,8 @@ class MyViewHolder(val binding: ListItemBinding)
 
         fun bind(movie: Movie){
             binding.listItemTitleTextView.text = movie.title
-            binding.listItemDescTextView.text = movie.overview
+            binding.listItemReleaseDate.text = movie.releaseDate
+            binding.listItemAverageVote.text = movie.voteAverage.toString()
             val posterUrl: String = "https://image.tmdb.org/t/p/w500"+movie.posterPath
             Glide.with(binding.listItemImageView.context)
                 .load(posterUrl)
